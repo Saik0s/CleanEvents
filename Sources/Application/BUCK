@@ -1,30 +1,29 @@
 apple_bundle(
-    name = "DemoApp",
-    binary = ":DemoAppBinary",
+    name = "App",
+    binary = ":AppBinary",
     extension = "app",
     info_plist = "Info.plist",
+    info_plist_substitution = APPLICATION_SUBSTITUTION,
+    visibility = ['PUBLIC'],
 )
 
 apple_binary(
-    name = "DemoAppBinary",
+    name = "AppBinary",
     srcs = glob([
-        "**/*.m",
-        "**/*.swift",
+        "*.m",
+        "*.swift",
     ]),
     frameworks = [
         "$SDKROOT/System/Library/Frameworks/Foundation.framework",
         "$SDKROOT/System/Library/Frameworks/UIKit.framework",
     ],
-    headers = glob([
-        "**/*.h",
-    ]),
-    libraries = [
-        "$SDKROOT/usr/lib/libobjc.dylib",
+    deps = [
+        '//Dependencies/Pods/RxSwift:RxSwift',
+        '//Dependencies/Pods/RxCocoa:RxCocoa'
     ],
-    preprocessor_flags = ["-fobjc-arc"],
 )
 
 apple_package(
-    name = "DemoAppPackage",
-    bundle = ":DemoApp",
+    name = "AppPackage",
+    bundle = ":App",
 )

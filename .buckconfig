@@ -1,13 +1,31 @@
-[project]
-    ide = xcode
 [cxx]
     default_platform = iphonesimulator-x86_64
-    ldflags = -framework Foundation -ObjC
-    cflags = -g
-[cache]
-    mode = dir
+
+[swift]
+    version = 4.0
+    compiler_flags = -DBUCK -enable-testing -suppress-warnings
+
 [apple]
-    default_debug_info_format_for_binaries = dwarf_and_dsym
-    default_debug_info_format_for_libraries = dwarf_and_dsym
-    default_debug_info_format_for_tests = dwarf_and_dsym
+    default_debug_info_format_for_binaries = dwarf
+    default_debug_info_format_for_libraries = dwarf
+    default_debug_info_format_for_tests = dwarf
     iphonesimulator_target_sdk_version = 10.0
+    iphoneos_target_sdk_version = 10.0
+    generate_missing_umbrella_headers = true
+    use_header_maps_in_xcode = false
+    xctool_path = xctool 
+    xctool_default_destination_specifier = name=iPhone 8,platform=iOS Simulator
+
+[alias]
+    app = //Sources/Application:App
+    tests = //Tests:Tests
+    uitests = //UITests:UITests
+      
+[httpserver]
+    port = 8080
+
+[project]
+    ide = xcode
+    ignore = .buckd, \
+             .git, \
+             buck-out, \

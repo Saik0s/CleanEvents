@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd "$(dirname "$0")/../Dependencies"
+
+bundle update 
+[[ $(find . -mmin -60 -type f) ]] && bundle exec pod install || bundle exec pod update 

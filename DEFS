@@ -1,3 +1,9 @@
+APPLICATION_SUBSTITUTION = {
+    "EXECUTABLE_NAME: "CleanEvents",
+    "PRODUCT_BUNDLE_IDENTIFIER": "com.template.cleanevents",
+    "PRODUCT_NAME": "CleanEvents",
+}
+
 EMPTY_CONFIGS = {
     "Debug": {},
     "Release": {},
