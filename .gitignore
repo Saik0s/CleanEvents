@@ -1,0 +1,9 @@
+.idea/
+buck-out/
+buck-cache/
+.buckd/
+Dependencies/Pods/
+Dependencies/Rome/
+.DS_Store
+Dependencies/build/
+*.mdj

@@ -1,0 +1,22 @@
+EMPTY_CONFIGS = {
+    "Debug": {},
+    "Release": {},
+}
+
+BASE_BUILD_CONFIGURATIONS = {
+    'LD_RUNPATH_SEARCH_PATHS': "@executable_path/../Frameworks @loader_path/../Frameworks @executable_path/Frameworks",
+    'SDKROOT' : "iphoneos",
+    'DEBUG_INFORMATION_FORMAT': 'dwarf',
+    'ENABLE_BITCODE' : "NO",
+}
+
+DEBUG_BUILD_CONFIGURATIONS = {
+}
+
+RELEASE_BUILD_CONFIGURATIONS = {
+}
+
+DEFAULT_BUILD_CONFIGURATIONS = {
+    'Development': BASE_BUILD_CONFIGURATIONS,
+    'Release': BASE_BUILD_CONFIGURATIONS
+}

@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Public: Generates header comment for file
+#
+# $1 - File name.
+# $2 - Creator name.
+#
+# Examples
+#
+#   header_comment "$file" "John Doe"
+#
+# Returns header comment
+function header_comment() {
+	echo "//"
+	echo "// $1"
+	echo "// Created by $2 on $(date +"%d/%m/%y")"
+	echo "// Copyright © $(date +"%Y") $2"
+	echo "// Licensed under the MIT license, see LICENSE file"
+	echo "//"
+}
+
+# Public: Get file content without header comment
+#
+# $1 - File name.
+#
+# Examples
+#
+#   content_of_file_without_header "$file"
+#
+# Returns content of file without header comment
+function content_of_file_without_header() {
+	still_comment=true
+	while IFS= read -r line; do
+		[[ $line =~ ^\/\/.*$ ]] || still_comment=false
+		[[ $still_comment == true ]] || echo $line
+	done < "$1"
+}
+
+name="Igor Tarasenko"
+
+cd "$(dirname "$0")/../Sources"
+
+for file in **/*.swift; do
+	echo "Replacing header in $file"
+	(header_comment "$file" "$name" && content_of_file_without_header "$file") > "${file}.tmp" && mv -f "${file}.tmp" "$file"
+done
+

@@ -1,0 +1,20 @@
+apple_resource(
+    name='AppResources',
+    dirs=[
+        'Animations',
+        'Fonts',
+        'Localization',
+        'Nibs',
+        'Storyboards',
+        'Styles',
+    ],
+    files=[],
+    visibility=['PUBLIC']
+)
+
+apple_asset_catalog(
+    name='AppAssets',
+    dirs=['Images/Media.xcassets'],
+    app_icon='AppIcon',
+    visibility=['PUBLIC']
+)

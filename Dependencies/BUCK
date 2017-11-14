@@ -1,0 +1,13 @@
+prebuilt_apple_framework(
+    name='RxCocoa',
+    framework='Rome/RxCocoa.framework',
+    preferred_linkage='static',
+    visibility=['//Application/...'],
+)
+
+prebuilt_apple_framework(
+    name='RxSwift',
+    framework='Rome/RxSwift.framework',
+    preferred_linkage='static',
+    visibility=['//Application/...'],
+)
