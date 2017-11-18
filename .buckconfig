@@ -1,6 +1,11 @@
+[buildfile]
+    includes = //DEFS
+  
 [cxx]
+    sandbox_sources = false
     default_platform = iphonesimulator-x86_64
-
+    cflags = -g
+    
 [swift]
     version = 4.0
     compiler_flags = -DBUCK -enable-testing -suppress-warnings
@@ -13,7 +18,7 @@
     iphoneos_target_sdk_version = 10.0
     generate_missing_umbrella_headers = true
     use_header_maps_in_xcode = false
-    xctool_path = xctool 
+    xctool_path = /usr/local/bin/xctool 
     xctool_default_destination_specifier = name=iPhone 8,platform=iOS Simulator
 
 [alias]
@@ -25,7 +30,7 @@
     port = 8080
 
 [project]
+    ide_force_kill = always
     ide = xcode
     ignore = .buckd, \
              .git, \
-             buck-out, \

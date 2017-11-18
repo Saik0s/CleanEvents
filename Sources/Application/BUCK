@@ -3,24 +3,34 @@ apple_bundle(
     binary = ":AppBinary",
     extension = "app",
     info_plist = "Info.plist",
-    info_plist_substitution = APPLICATION_SUBSTITUTION,
+    product_name = PROJECT_NAME,
     visibility = ['PUBLIC'],
 )
 
 apple_binary(
     name = "AppBinary",
-    srcs = glob([
-        "*.m",
-        "*.swift",
-    ]),
+    srcs = ["AppDelegate.swift"],
+    # srcs = ["main.m"],
     frameworks = [
         "$SDKROOT/System/Library/Frameworks/Foundation.framework",
         "$SDKROOT/System/Library/Frameworks/UIKit.framework",
     ],
     deps = [
         '//Dependencies/Pods/RxSwift:RxSwift',
-        '//Dependencies/Pods/RxCocoa:RxCocoa'
+        '//Dependencies/Pods/RxCocoa:RxCocoa',
+        # '//Sources/Core:Core'
     ],
+    # visibility = ['PUBLIC'],
+    configs = {
+        'Debug': {
+            'EMBEDDED_CONTENT_CONTAINS_SWIFT': 'YES',
+            'SUPPORTED_PLATFORMS': "iphonesimulator iphoneos",
+        },
+        'Release': {
+            'EMBEDDED_CONTENT_CONTAINS_SWIFT': 'YES',
+            'SUPPORTED_PLATFORMS': "iphonesimulator iphoneos",
+        },
+    }
 )
 
 apple_package(

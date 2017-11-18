@@ -1,0 +1,15 @@
+# apple_library(
+#     name = "Core",
+#     modular = True,
+#     srcs = ["AppDelegate.swift"],
+#     frameworks = [
+#         "$SDKROOT/System/Library/Frameworks/Foundation.framework",
+#         "$SDKROOT/System/Library/Frameworks/UIKit.framework",
+#     ],
+#     deps = [
+#         '//Dependencies/Pods/RxSwift:RxSwift',
+#         '//Dependencies/Pods/RxCocoa:RxCocoa',
+#     ],
+#     swift_version = "4",
+#     visibility = ['//Sources/...'],
+# )

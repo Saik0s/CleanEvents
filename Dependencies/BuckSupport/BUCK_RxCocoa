@@ -19,7 +19,7 @@ apple_library(
     excludes = [
         "RxCocoa/Platform/**/*.swift",
     ]),
-    exported_headers = glob([
+    headers = glob([
         "RxCocoa/RxCocoa.h",
         "RxCocoa/Common/**/*.h",
         "RxCocoa/Traits/**/*.h",
@@ -29,9 +29,6 @@ apple_library(
     frameworks = [
         "$SDKROOT/System/Library/Frameworks/Foundation.framework",
         "$SDKROOT/System/Library/Frameworks/UIKit.framework",
-    ],
-    libraries = [
-        "$SDKROOT/usr/lib/libobjc.dylib",
     ],
     swift_version = "4",
     visibility = ['PUBLIC'],

@@ -1,28 +1,35 @@
+BUNDLE_IDENTIFIER_PREFIX = "com.igortarasenko."
+PROJECT_NAME = "CleanEvents"
+
 APPLICATION_SUBSTITUTION = {
-    "EXECUTABLE_NAME: "CleanEvents",
-    "PRODUCT_BUNDLE_IDENTIFIER": "com.template.cleanevents",
-    "PRODUCT_NAME": "CleanEvents",
+    'EXECUTABLE_NAME': PROJECT_NAME,
+    'PRODUCT_BUNDLE_IDENTIFIER': BUNDLE_IDENTIFIER_PREFIX + PROJECT_NAME,
+    'PRODUCT_NAME': PROJECT_NAME,
 }
 
 EMPTY_CONFIGS = {
-    "Debug": {},
-    "Release": {},
+    'Debug': {},
+    'Release': {},
 }
 
 BASE_BUILD_CONFIGURATIONS = {
-    'LD_RUNPATH_SEARCH_PATHS': "@executable_path/../Frameworks @loader_path/../Frameworks @executable_path/Frameworks",
-    'SDKROOT' : "iphoneos",
-    'DEBUG_INFORMATION_FORMAT': 'dwarf',
-    'ENABLE_BITCODE' : "NO",
+    # 'LD_RUNPATH_SEARCH_PATHS': "@executable_path/../Frameworks @loader_path/../Frameworks @executable_path/Frameworks",
+    # 'SDKROOT': "iphoneos",
+    # 'DEBUG_INFORMATION_FORMAT': 'dwarf',
+    # 'ENABLE_BITCODE': "NO",
+    # 'ONLY_ACTIVE_ARCH': 'YES',
+    'SUPPORTED_PLATFORMS': "iphonesimulator iphoneos",
 }
 
 DEBUG_BUILD_CONFIGURATIONS = {
+    'EMBEDDED_CONTENT_CONTAINS_SWIFT': 'YES',
+    'ONLY_ACTIVE_ARCH': 'YES',
 }
 
 RELEASE_BUILD_CONFIGURATIONS = {
 }
 
 DEFAULT_BUILD_CONFIGURATIONS = {
-    'Development': BASE_BUILD_CONFIGURATIONS,
-    'Release': BASE_BUILD_CONFIGURATIONS
+    'Debug': flatten_dicts(BASE_BUILD_CONFIGURATIONS, DEBUG_BUILD_CONFIGURATIONS),
+    'Release': flatten_dicts(BASE_BUILD_CONFIGURATIONS, RELEASE_BUILD_CONFIGURATIONS)
 }

@@ -29,10 +29,14 @@ post_install do |installer|
     if File.directory?(buck_files_dir)
         installer.pod_targets.flat_map do |pod_target|
             pod_name = pod_target.pod_name
+            
+            # Copy related BUCK file for each Pod
             buck_file = buck_files_dir + '/BUCK_' + pod_name
             if File.file?(buck_file)
                 FileUtils.cp(buck_file, 'Pods/' + pod_name + '/BUCK', preserve: false)
             end
+            
+            # Copy bridging header if exist
             bridging_header = buck_files_dir + '/' + pod_name + '-Bridging-Header.h'
             if File.file?(bridging_header)
                 FileUtils.cp(bridging_header, 'Pods/' + pod_name + '/' + pod_name + '-Bridging-Header.h', preserve: false)
