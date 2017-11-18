@@ -7,3 +7,6 @@ Dependencies/Rome/
 .DS_Store
 Dependencies/build/
 *.mdj
+*.xcworkspace/
+*.xcodeproj/
+codealike.json
