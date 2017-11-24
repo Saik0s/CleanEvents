@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# Downloads cocoapods dependencies 
+
+set -euo pipefail
+IFS=$'\n\t'
+
+cd "${0%/*}/.."
+
+${0%/*}/setup
+
+buck tests
+buck build app
