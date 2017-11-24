@@ -3,9 +3,6 @@ apple_library(
     srcs = glob([
         "*.swift"
     ]),
-    exported_headers = [
-        "Core-Public-Swift.h"
-    ],
     frameworks = [
         "$SDKROOT/System/Library/Frameworks/Foundation.framework",
         "$SDKROOT/System/Library/Frameworks/UIKit.framework",
