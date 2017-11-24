@@ -1,0 +1,13 @@
+apple_test(
+    name = 'AppTests',
+    deps = [
+        '//Sources/Core:Core'
+    ],
+    srcs = glob(['*.swift']),
+    info_plist = 'InfoTests.plist',
+    frameworks = [
+        '$SDKROOT/System/Library/Frameworks/Foundation.framework',
+        '$PLATFORM_DIR/Developer/Library/Frameworks/XCTest.framework'
+    ],
+    visibility = ['PUBLIC'],
+)

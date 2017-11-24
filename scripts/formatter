@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# Linting and formatting source files 
+
+set -euo pipefail
+IFS=$'\n\t'
+
+cd "${0%/*}/.."
+
+# swiftlint
+# swiftformat
