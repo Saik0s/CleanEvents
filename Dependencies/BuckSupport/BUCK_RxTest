@@ -1,18 +1,15 @@
 apple_library(
     name = 'RxTest',
-    preprocessor_flags = ['-fobjc-arc'],
     srcs = glob([
-        "RxTest/**/*.swift",
-        "Platform/**/*.swift"
-    ], 
-    excludes = [
-        "RxTest/Platform/**/*.swift"
+        "**/*.swift",
     ]),
     frameworks = [
-        "$SDKROOT/System/Library/Frameworks/Foundation.framework",
         "$PLATFORM_DIR/Developer/Library/Frameworks/XCTest.framework",
     ],
-    swift_version = "4",
-    visibility = ['PUBLIC'],
-    deps = ['//Dependencies/Pods/RxSwift:RxSwift'],
+    deps = [
+        '//Dependencies/Pods/RxSwift:RxSwift'
+    ],
+    visibility = [
+        'PUBLIC'
+    ],
 )

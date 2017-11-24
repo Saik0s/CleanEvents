@@ -1,49 +1,62 @@
 #!/usr/bin/env bash
+#
+# Fix header comments in source files 
 
-set -e
+set -euo pipefail
+IFS=$'\n\t'
 
-# Public: Generates header comment for file
-#
-# $1 - File name.
-# $2 - Creator name.
-#
-# Examples
-#
-#   header_comment "$file" "John Doe"
-#
-# Returns header comment
-function header_comment() {
-	echo "//"
-	echo "// $1"
-	echo "// Created by $2 on $(date +"%d/%m/%y")"
-	echo "// Copyright © $(date +"%Y") $2"
-	echo "// Licensed under the MIT license, see LICENSE file"
-	echo "//"
+cd "${0%/*}/../sources"
+
+declare NAME='Igor Tarasenko'
+
+#######################################
+# Generates header comment
+# Globals:
+#   NAME
+# Arguments:
+#   File name
+# Returns:
+#   header lines
+#######################################
+header_comment() {
+	cat <<- END
+	//
+	// $1
+	// Created by $NAME on $(date +"%d/%m/%y")
+	// Copyright © $(date +"%Y") $NAME
+	// Licensed under the MIT license, see LICENSE file
+	//
+	END
 }
 
-# Public: Get file content without header comment
-#
-# $1 - File name.
-#
-# Examples
-#
-#   content_of_file_without_header "$file"
-#
-# Returns content of file without header comment
-function content_of_file_without_header() {
+#######################################
+# Returns content of files without header comment
+# Globals:
+#   none
+# Arguments:
+#   File name
+# Returns:
+#   content of file
+#######################################
+content_of_file_without_header() {
 	still_comment=true
 	while IFS= read -r line; do
 		[[ $line =~ ^\/\/.*$ ]] || still_comment=false
-		[[ $still_comment == true ]] || echo $line
+		[[ $still_comment == true ]] || echo "$line"
 	done < "$1"
+	echo "$line"
 }
 
-name="Igor Tarasenko"
+# main function
+main() {
+	for file in ./**/*.swift; do
+		echo "Replacing header in $file"
+		echo "$(header_comment ${file##*/})" > "$file".tmp
+		echo "$(content_of_file_without_header $file)" >> "$file".tmp
+		mv -f "$file".tmp $file
+	done
+}
 
-cd "$(dirname "$0")/../Sources"
+main
 
-for file in **/*.swift; do
-	echo "Replacing header in $file"
-	(header_comment "$file" "$name" && content_of_file_without_header "$file") > "${file}.tmp" && mv -f "${file}.tmp" "$file"
-done
 

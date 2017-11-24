@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
+#
+# Downloads cocoapods dependencies 
 
-set -e
+set -euo pipefail
+IFS=$'\n\t'
 
-cd "$(dirname "$0")/../Dependencies"
+cd "${0%/*}/../dependencies"
 
-bundle update 
-[[ $(find . -mmin -60 -type f) ]] && bundle exec pod install || bundle exec pod update 
+bundle exec pod repo update
+bundle exec pod install

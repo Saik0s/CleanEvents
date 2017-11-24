@@ -1,36 +1,17 @@
 apple_library(
     name = 'RxCocoa',
-    modular = True,
-    preprocessor_flags = ['-fobjc-arc'],
     bridging_header = 'RxCocoa-Bridging-Header.h',
     srcs = glob([
-        "RxCocoa/*.swift",
-        "RxCocoa/Common/**/*.swift",
-        "RxCocoa/Traits/**/*.swift",
-        "RxCocoa/Foundation/**/*.swift",
-        "RxCocoa/Runtime/**/*.swift",
-        "RxCocoa/Common/**/*.m",
-        "RxCocoa/Traits/**/*.m",
-        "RxCocoa/Foundation/**/*.m",
-        "RxCocoa/Runtime/**/*.m",
-        "Platform/**/*.swift",
-        "RxCocoa/iOS/**/*.swift"
-    ], 
-    excludes = [
-        "RxCocoa/Platform/**/*.swift",
+        "**/*.swift",
+        "**/*.m",
     ]),
     headers = glob([
-        "RxCocoa/RxCocoa.h",
-        "RxCocoa/Common/**/*.h",
-        "RxCocoa/Traits/**/*.h",
-        "RxCocoa/Foundation/**/*.h",
-        "RxCocoa/Runtime/**/*.h",
+        "**/*.h",
     ]),
-    frameworks = [
-        "$SDKROOT/System/Library/Frameworks/Foundation.framework",
-        "$SDKROOT/System/Library/Frameworks/UIKit.framework",
+    deps = [
+        '//Dependencies/Pods/RxSwift:RxSwift'
     ],
-    swift_version = "4",
-    visibility = ['PUBLIC'],
-    deps = ['//Dependencies/Pods/RxSwift:RxSwift'],
+    visibility = [
+        'PUBLIC'
+    ],
 )

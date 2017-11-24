@@ -2,27 +2,32 @@
     includes = //DEFS
   
 [cxx]
-    sandbox_sources = false
+    combined_preprocess_and_compile = true 
     default_platform = iphonesimulator-x86_64
-    cflags = -g
+    cxxflags = -g -fobjc-arc -fmodules
+    cflags = -g -fobjc-arc -fmodules
     
 [swift]
     version = 4.0
-    compiler_flags = -DBUCK -enable-testing -suppress-warnings
 
 [apple]
-    default_debug_info_format_for_binaries = dwarf
     default_debug_info_format_for_libraries = dwarf
+    default_debug_info_format_for_binaries = dwarf
     default_debug_info_format_for_tests = dwarf
+    
     iphonesimulator_target_sdk_version = 10.0
     iphoneos_target_sdk_version = 10.0
+    
     generate_missing_umbrella_headers = true
     use_header_maps_in_xcode = false
-    xctool_path = /usr/local/bin/xctool 
+    use_swift_delegate = false
+    
     xctool_default_destination_specifier = name=iPhone 8,platform=iOS Simulator
+    xctool_path = /usr/local/bin/xctool 
 
 [alias]
     app = //Sources/Application:App
+    core = //Sources/Core:Core
     tests = //Tests:Tests
     uitests = //UITests:UITests
       
@@ -33,4 +38,8 @@
     ide_force_kill = always
     ide = xcode
     ignore = .buckd, \
+             .hg, \
              .git, \
+             .idea, \
+             buck-cache, \
+             buck-out, \

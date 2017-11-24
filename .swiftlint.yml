@@ -4,8 +4,6 @@ excluded:
   - .idea
   - .build
   - .buckd
-  - .history
-  - .info
   - .vscode
   - buck-cache
   - buck-out
@@ -15,16 +13,10 @@ excluded:
   - Scripts
   - Templates
   - Tests
-  - Sources/Infrastructure/Helpers/Strongify.swift
+  - UITests
   - Sources/Generated
 whitelist_rules:
   # - closure_parameter_position
-  - file_header
-  - operator_usage_whitespace
-  - operator_whitespace
-  - contains_over_first_not_nil
-  #  - sorted_imports
-  #  - switch_case_on_newline
   - array_init
   - attributes
   - block_based_kvo
@@ -36,6 +28,7 @@ whitelist_rules:
   - comma
   - compiler_protocol_init
   - conditional_returns_on_newline
+  - contains_over_first_not_nil
   - control_statement
   - custom_rules
   - cyclomatic_complexity
@@ -50,11 +43,9 @@ whitelist_rules:
   - explicit_init
   - explicit_top_level_acl
   - explicit_type_interface
-  # - extension_access_modifier
   - fallthrough
   - fatal_error_message
-  - literal_expression_end_indentation
-  - multiline_arguments
+  - file_header
   - file_length
   - first_where
   - for_where
@@ -68,7 +59,6 @@ whitelist_rules:
   - implicit_getter
   - implicit_return
   - implicitly_unwrapped_optional
-  - unneeded_break_in_switch
   - is_disjoint
   - joined_default_parameter
   - large_tuple
@@ -79,17 +69,20 @@ whitelist_rules:
   - legacy_nsgeometry_functions
   - let_var_whitespace
   - line_length
+  - literal_expression_end_indentation
   - mark
+  - multiline_arguments
   - multiline_parameters
   - multiple_closures_with_trailing_closure
   - nesting
   - nimble_operator
   - no_extension_access_modifier
-  #  - no_grouping_extension
   - notification_center_detachment
   - number_separator
   - object_literal
   - opening_brace
+  - operator_usage_whitespace
+  - operator_whitespace
   - overridden_super_call
   - pattern_matching_keywords
   - private_outlet
@@ -107,17 +100,16 @@ whitelist_rules:
   - shorthand_operator
   - single_test_class
   - statement_position
-  # - strict_fileprivate
   - superfluous_disable_command
+  - switch_case_alignment
   - syntactic_sugar
-  #  - todo
-  # - trailing_closure
   - trailing_comma
   - trailing_newline
   - trailing_semicolon
   - trailing_whitespace
   - type_body_length
   - type_name
+  - unneeded_break_in_switch
   - unneeded_parentheses_in_closure_argument
   - unused_closure_parameter
   - unused_enumerated
@@ -129,10 +121,16 @@ whitelist_rules:
   - void_return
   - weak_delegate
   - xctfail_message
-  - switch_case_alignment
+  # - no_grouping_extension
+  # - sorted_imports
+  # - switch_case_on_newline
+  # - todo
+  # - extension_access_modifier
+  # - strict_fileprivate
+  # - trailing_closure
 
 file_header:
-  required_pattern: |
+  required_pattern:        |
                     \/\/
                     \/\/ .*?\.swift
                     \/\/ Created by .*?
@@ -140,49 +138,46 @@ file_header:
                     \/\/ Licensed under the MIT license, see LICENSE file
                     \/\/
 
-force_cast: error
-force_try: error
-force_unwrapping: error
+force_cast:                error
+force_try:                 error
+force_unwrapping:          error
 
 trailing_whitespace:
-  ignores_empty_lines: false
-  severity: warning
-trailing_newline: error
-trailing_semicolon: error
+  ignores_empty_lines:     false
+  severity:                warning
+trailing_newline:          error
+trailing_semicolon:        error
 
 vertical_whitespace:
-  max_empty_lines: 1
-  severity: warning
+  max_empty_lines:         1
+  severity:                warning
 
-comma: error
+comma:                     error
 colon:
-  flexible_right_spacing: true
-  severity: error
-opening_brace: error
-empty_count: error
-legacy_constructor: error
+  flexible_right_spacing:  true
+  severity:                error
+opening_brace:             error
+empty_count:               error
+legacy_constructor:        error
 statement_position:
-  statement_mode: default
-  severity: error
-legacy_constant: error
+  statement_mode:          default
+  severity:                error
+legacy_constant:           error
 
 type_name:
-  min_length: 4
+  min_length:              4
   max_length:
-    warning: 45
-    error: 50
+    warning:               45
+    error:                 50
   excluded:
     - T
-    - E
-    - V
-    - K
 
 identifier_name:
   max_length:
-    warning: 40
-    error: 50
+    warning:               40
+    error:                 50
   min_length:
-    error: 3
+    error:                 3
   excluded:
     - x
     - y
@@ -196,140 +191,134 @@ identifier_name:
     - R
 
 function_parameter_count:
-  warning: 10
-  error: 10
+  warning:                 10
+  error:                   10
 
 line_length:
-  warning: 100
-  error: 110
+  warning:                 100
+  error:                   110
 
 function_body_length:
-  warning: 100
-  error: 200
+  warning:                 100
+  error:                   200
 
 file_length:
-  warning: 500
-  error: 1000
+  warning:                 500
+  error:                   1000
 
 cyclomatic_complexity:
-  warning: 20
-  error: 30
+  warning:                 20
+  error:                   30
 
 large_tuple:
-  warning: 4
-  error: 5
+  warning:                 4
+  error:                   5
 
 nesting:
   type_level:
-    warning: 4
-    error: 5
+    warning:               4
+    error:                 5
 
-reporter: 'xcode' # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
+reporter:                  'xcode' # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
 
 custom_rules:
   comments_space:
-    name: 'Space After Comment'
-    regex: '(^ *//\w+)'
-    message: 'There should be a space after //'
-    severity: warning
+    name:                  'Space After Comment'
+    regex:                 '(^ *//\w+)'
+    message:               'There should be a space after //'
+    severity:              warning
   empty_first_line:
-    name: 'Empty First Line'
-    regex: '(^[ a-zA-Z ]*(?:protocol|extension|class|struct|func) [ a-zA-Z0-9:,<>\.\(\)\"-=`]*\{\n( *)?\n)'
-    message: 'There should not be an empty line after a declaration'
-    severity: error
+    name:                  'Empty First Line'
+    regex:                 '(^[ a-zA-Z ]*(?:protocol|extension|class|struct|func) [ a-zA-Z0-9:,<>\.\(\)\"-=`]*\{\n( *)?\n)'
+    message:               'There should not be an empty line after a declaration'
+    severity:              error
   empty_line_after_guard:
-    name: 'Empty Line After Guard'
-    regex: '(^ *guard[ a-zA-Z0-9=?.\(\),><!`]*\{[ a-zA-Z0-9=?.\(\),><!`\"]*\}\n *(?!(?:return|guard))\S+)'
-    message: 'There should be an empty line after a guard'
-    severity: error
+    name:                  'Empty Line After Guard'
+    regex:                 '(^ *guard[ a-zA-Z0-9=?.\(\),><!`]*\{[ a-zA-Z0-9=?.\(\),><!`\"]*\}\n *(?!(?:return|guard))\S+)'
+    message:               'There should be an empty line after a guard'
+    severity:              error
   empty_line_after_super:
-    name: 'Empty Line After Super'
-    regex: '(^ *super\.[ a-zA-Z0-9=?.\(\)\{\}:,><!`\"]*\n *(?!(?:\}|return))\S+)'
-    message: 'There should be an empty line after super'
-    severity: error
+    name:                  'Empty Line After Super'
+    regex:                 '(^ *super\.[ a-zA-Z0-9=?.\(\)\{\}:,><!`\"]*\n *(?!(?:\}|return))\S+)'
+    message:               'There should be an empty line after super'
+    severity:              error
   custom_colon:
-    name: 'Custom Colon'
-    regex: '(?<!swiftlint|HH|mm|h|\"H|''H|\sH):([^\-\)\"\s\\\/\]])'
-    message: 'Colons should be next to the identifier when specifying a type.'
-    severity: error
+    name:                  'Custom Colon'
+    regex:                 '(?<!swiftlint|HH|mm|h|\"H|''H|\sH):([^\-\)\"\s\\\/\]])'
+    message:               'Colons should be next to the identifier when specifying a type.'
+    severity:              error
   marks_style:
-    name: "Marks"
-    regex: "(//?[ ]MARK: -?[a-zA-Z0-9])"
-    message: "Marks should follow the following structure: // MARK: - Comment."
-    severity: warning
+    name:                  "Marks"
+    regex:                 "(//?[ ]MARK:   -?[a-zA-Z0-9])"
+    message:               "Marks should follow the following structure: // MARK: - Comment."
+    severity:              warning
   outlet:
-    name: "outlet"
-    regex: '(@IBOutlet\s*(?!private(set)*\s*weak)\w*\s+var)'
-    message: "IBOutlet must be private(set) weak. "
-    severity: error
+    name:                  "outlet"
+    regex:                 '(@IBOutlet\s*(?!private(set)*\s*weak)\w*\s+var)'
+    message:               "IBOutlet must be private(set) weak. "
+    severity:              error
   outlet_collection:
-    name: "outlet_collection"
-    regex: '(@IBOutletCollection)'
-    message: "IBOutletCollection is not permitted. "
-    severity: error
+    name:                  "outlet_collection"
+    regex:                 '(@IBOutletCollection)'
+    message:               "IBOutletCollection is not permitted. "
+    severity:              error
   delegate:
-    name: "delegate"
-    regex: '(\s{2,}var\s+delegate)'
-    message: "Please use `weak` for `delegate`. "
-    severity: error
-  comments_space:
-    name: "Space After Comment"
-    regex: '(^\s*//\w+)'
-    message: "There should be a space after //"
-    severity: warning
-    match_kinds: comment
+    name:                  "delegate"
+    regex:                 '(\s{2,}var\s+delegate)'
+    message:               "Please use `weak` for `delegate`. "
+    severity:              error
   multiple_empty_lines:
-    name: "Multiple Empty Lines"
-    regex: '((?:\s*\n){3,})'
-    message: "There are too many line breaks"
-    severity: warning
+    name:                  "Multiple Empty Lines"
+    regex:                 '((?:\s*\n){3,})'
+    message:               "There are too many line breaks"
+    severity:              warning
   empty_line:
-    name: "Empty Line"
-    regex: '(\}\n[ \t]*([ \t]|class|static|dynamic|@objc|@IBAction|override|private|public|internal)*func)'
-    message: "Must have an empty line between functions. "
-    severity: warning
+    name:                  "Empty Line"
+    regex:                 '(\}\n[ \t]*([ \t]|class|static|dynamic|@objc|@IBAction|override|private|public|internal)*func)'
+    message:               "Must have an empty line between functions. "
+    severity:              warning
   switch_enum:
-    name: "Switch Enum"
-    regex: '(case\s\w+\.+rawValue:)'
-    message: "Don't use enum.rawValue in switch-case. Please convert value to enum first. "
-    severity: warning
+    name:                  "Switch Enum"
+    regex:                 '(case\s\w+\.+rawValue:)'
+    message:               "Don't use enum.rawValue in switch-case. Please convert value to enum first. "
+    severity:              warning
   compile_lookup:
-    name: "Compile Lookup"
-    regex: '((var|let)\s+\w+\s*=\s*\[)'
-    message: "You need to give types to the array and dictionary. "
-    severity: error
+    name:                  "Compile Lookup"
+    regex:                 '((var|let)\s+\w+\s*=\s*\[)'
+    message:               "You need to give types to the array and dictionary. "
+    severity:              error
   weak_self_usage:
-    name: "Weak Self Usage"
-    regex: '(self\?\.)'
-    message: "Explicitly extending lifetime is preferred to optional binding. Ex: `guard let this = self else { return }`. "
-    severity: warning
+    name:                  "Weak Self Usage"
+    regex:                 '(self\?\.)'
+    message:               "Explicitly extending lifetime is preferred to optional binding. Ex: `guard let this = self else { return }`. "
+    severity:              warning
   weak_self_binding:
-    name: "Weak Self Binding"
-    regex: '(let\s+(?!this)\w+\s*=\s*self[,\s])'
-    message: "Please use `let this = self` instead. "
-    severity: warning
+    name:                  "Weak Self Binding"
+    regex:                 '(let\s+(?!this)\w+\s*=\s*self[,\s])'
+    message:               "Please use `let this = self` instead. "
+    severity:              warning
   unowned:
-    name: "Unowned"
-    regex: '(unowned)'
-    message: "Please use `weak` instead. "
-    severity: error
+    name:                  "Unowned"
+    regex:                 '(unowned)'
+    message:               "Please use `weak` instead. "
+    severity:              error
   empty_string:
-    name: "Empty String"
-    regex: '(.length\s*(==|!=|<|<=|>|>=)\s*0)'
-    message: "Please use `isEmpty` instead. "
-    severity: error
+    name:                  "Empty String"
+    regex:                 '(.length\s*(==|!=|<|<=|>|>=)\s*0)'
+    message:               "Please use `isEmpty` instead. "
+    severity:              error
   bracket:
-    name: "Bracket"
-    regex: '(\}\n{2,}\}|\{\n{2,}\{)'
-    message: "No empty line between two open or close brackets. "
-    severity: warning
+    name:                  "Bracket"
+    regex:                 '(\}\n{2,}\}|\{\n{2,}\{)'
+    message:               "No empty line between two open or close brackets. "
+    severity:              warning
   query_string:
-    name: "Query String"
-    regex: '(\s+[=!><]+ \\\(.*\))'
-    message: "Donot use the string interpolation syntax for query string. "
-    severity: warning
+    name:                  "Query String"
+    regex:                 '(\s+[=!><]+ \\\(.*\))'
+    message:               "Donot use the string interpolation syntax for query string. "
+    severity:              warning
   empty_count_zero:
-    name: "Empty Count Violation"
-    regex: '\.count\s*(==|!=|<|<=|>|>=)\s*0'
-    message: "Prefer checking `isEmpty` over comparing `count` to zero."
-    severity: warning
+    name:                  "Empty Count Violation"
+    regex:                 '\.count\s*(==|!=|<|<=|>|>=)\s*0'
+    message:               "Prefer checking `isEmpty` over comparing `count` to zero."
+    severity:              warning

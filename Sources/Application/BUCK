@@ -4,33 +4,37 @@ apple_bundle(
     extension = "app",
     info_plist = "Info.plist",
     product_name = PROJECT_NAME,
-    visibility = ['PUBLIC'],
+    deps = [
+        '//Sources/Core:CoreFramework'
+    ],
+    visibility = [
+        'PUBLIC'
+    ],
 )
 
 apple_binary(
     name = "AppBinary",
-    srcs = ["AppDelegate.swift"],
-    # srcs = ["main.m"],
+    srcs = glob([
+        "*.m"
+    ]),
     frameworks = [
         "$SDKROOT/System/Library/Frameworks/Foundation.framework",
         "$SDKROOT/System/Library/Frameworks/UIKit.framework",
     ],
     deps = [
-        '//Dependencies/Pods/RxSwift:RxSwift',
-        '//Dependencies/Pods/RxCocoa:RxCocoa',
-        # '//Sources/Core:Core'
+        '//Resources:AppResources',
+        '//Sources/Core:Core'
     ],
-    # visibility = ['PUBLIC'],
-    configs = {
-        'Debug': {
-            'EMBEDDED_CONTENT_CONTAINS_SWIFT': 'YES',
-            'SUPPORTED_PLATFORMS': "iphonesimulator iphoneos",
-        },
-        'Release': {
-            'EMBEDDED_CONTENT_CONTAINS_SWIFT': 'YES',
-            'SUPPORTED_PLATFORMS': "iphonesimulator iphoneos",
-        },
-    }
+    # configs = {
+    #     'Debug': {
+    #         'EMBEDDED_CONTENT_CONTAINS_SWIFT': 'YES',
+    #         'SUPPORTED_PLATFORMS': "iphonesimulator iphoneos",
+    #     },
+    #     'Release': {
+    #         'EMBEDDED_CONTENT_CONTAINS_SWIFT': 'YES',
+    #         'SUPPORTED_PLATFORMS': "iphonesimulator iphoneos",
+    #     },
+    # }
 )
 
 apple_package(

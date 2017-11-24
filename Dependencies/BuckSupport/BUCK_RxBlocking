@@ -1,17 +1,12 @@
 apple_library(
     name = 'RxBlocking',
-    preprocessor_flags = ['-fobjc-arc'],
     srcs = glob([
-        "RxBlocking/**/*.swift",
-        "Platform/**/*.swift"
-    ], 
-    excludes = [
-        "RxBlocking/Platform/**/*.swift"
+        "**/*.swift",
     ]),
-    frameworks = [
-        "$SDKROOT/System/Library/Frameworks/Foundation.framework",
+    deps = [
+        '//Dependencies/Pods/RxSwift:RxSwift'
     ],
-    swift_version = "4",
-    visibility = ['PUBLIC'],
-    deps = ['//Dependencies/Pods/RxSwift:RxSwift'],
+    visibility = [
+        'PUBLIC'
+    ],
 )

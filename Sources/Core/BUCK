@@ -1,15 +1,35 @@
-# apple_library(
-#     name = "Core",
-#     modular = True,
-#     srcs = ["AppDelegate.swift"],
-#     frameworks = [
-#         "$SDKROOT/System/Library/Frameworks/Foundation.framework",
-#         "$SDKROOT/System/Library/Frameworks/UIKit.framework",
-#     ],
-#     deps = [
-#         '//Dependencies/Pods/RxSwift:RxSwift',
-#         '//Dependencies/Pods/RxCocoa:RxCocoa',
-#     ],
-#     swift_version = "4",
-#     visibility = ['//Sources/...'],
-# )
+apple_library(
+    name = "Core",
+    srcs = glob([
+        "*.swift"
+    ]),
+    exported_headers = [
+        "Core-Public-Swift.h"
+    ],
+    frameworks = [
+        "$SDKROOT/System/Library/Frameworks/Foundation.framework",
+        "$SDKROOT/System/Library/Frameworks/UIKit.framework",
+    ],
+    deps = [
+        '//Dependencies/Pods/RxSwift:RxSwift',
+        '//Dependencies/Pods/RxCocoa:RxCocoa',
+    ],
+    visibility = [
+        'PUBLIC'
+    ],
+)
+
+apple_bundle(
+    name = "CoreFramework",
+    binary = ":Core#shared",
+    extension = "framework",
+    info_plist = "Info.plist",
+    product_name = "Core",
+    deps = [
+        '//Dependencies/Pods/RxSwift:RxSwift',
+        '//Dependencies/Pods/RxCocoa:RxCocoa',
+    ],
+    visibility = [
+        'PUBLIC'
+    ],
+)
