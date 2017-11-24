@@ -25,16 +25,6 @@ apple_binary(
         '//Resources:AppResources',
         '//Sources/Core:Core'
     ],
-    # configs = {
-    #     'Debug': {
-    #         'EMBEDDED_CONTENT_CONTAINS_SWIFT': 'YES',
-    #         'SUPPORTED_PLATFORMS': "iphonesimulator iphoneos",
-    #     },
-    #     'Release': {
-    #         'EMBEDDED_CONTENT_CONTAINS_SWIFT': 'YES',
-    #         'SUPPORTED_PLATFORMS': "iphonesimulator iphoneos",
-    #     },
-    # }
 )
 
 apple_package(

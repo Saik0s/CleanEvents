@@ -12,10 +12,16 @@ use_frameworks!
 inhibit_all_warnings!
 
 abstract_target :Dependencies do
+    
+    # ReactiveX
     pod 'RxSwift',    git: 'https://github.com/ReactiveX/RxSwift.git' # '~> 4.0'
     pod 'RxCocoa',    git: 'https://github.com/ReactiveX/RxSwift.git' # '~> 4.0'
     pod 'RxBlocking', git: 'https://github.com/ReactiveX/RxSwift.git' # '~> 4.0'
     pod 'RxTest',     git: 'https://github.com/ReactiveX/RxSwift.git' # '~> 4.0'
+    
+    # UI
+    pod "Texture/IGListKit"
+    pod "Texture/Yoga"
 
     target :Empty
 end

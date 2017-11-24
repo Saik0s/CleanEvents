@@ -18,6 +18,16 @@ apple_library(
     ], excludes = [
         "RxBlocking/Platform/**/*.swift"
     ]),
+    configs = {
+        'Debug': {
+            'EMBEDDED_CONTENT_CONTAINS_SWIFT': 'YES',
+            'SUPPORTED_PLATFORMS': "iphonesimulator iphoneos",
+        },
+        'Release': {
+            'EMBEDDED_CONTENT_CONTAINS_SWIFT': 'YES',
+            'SUPPORTED_PLATFORMS': "iphonesimulator iphoneos",
+        },
+    }
     frameworks = [
         '$SDKROOT/System/Library/Frameworks/UIKit.framework',
         '$SDKROOT/System/Library/Frameworks/Foundation.framework',
