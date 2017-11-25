@@ -8,6 +8,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+// import IGListKit 
+// import AsyncDisplayKit 
 
 @objc(AppDelegate)
 public class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +25,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Test")
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(
+        window?.rootViewController = ASNavigationController(
             navigationBarClass: nil,
             toolbarClass: nil
         )
