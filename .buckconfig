@@ -20,10 +20,10 @@
     use_swift_delegate = false
     xctool_path = /usr/local/bin/xctool 
 [alias]
-    app = //sources/Application:App
-    core = //sources/Core:Core
-    tests = //tests:Tests
-    uitests = //uitests:UITests
+    app = //Sources/Application:App
+    core = //Sources/Core:Core
+    tests = //Tests:Tests
+    uitests = //UITests:UITests
 [httpserver]
     port = 8080
 [doctor]

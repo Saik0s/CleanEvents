@@ -6,7 +6,7 @@ osx_image: xcode8.3
 git:
   depth:   10
 install:   echo "<3"
-script:    ./scripts/build
+script:    ./Scripts/build
 branches:
   only:
     - master

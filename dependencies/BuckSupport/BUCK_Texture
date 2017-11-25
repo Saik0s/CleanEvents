@@ -63,7 +63,7 @@ apple_library(
         '$SDKROOT/System/Library/Frameworks/MobileCoreServices.framework',
     ],
     deps = [
-        '//dependencies/Pods/IGListKit:IGListKit'
+        '//Dependencies/Pods/IGListKit:IGListKit'
     ],
     visibility = [
         'PUBLIC'

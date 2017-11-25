@@ -1,7 +1,7 @@
 apple_test(
     name = 'AppTests',
     deps = [
-        '//sources/Core:Core'
+        '//Sources/Core:Core'
     ],
     srcs = glob(['*.swift']),
     info_plist = 'InfoTests.plist',

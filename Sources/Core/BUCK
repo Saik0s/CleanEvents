@@ -20,10 +20,10 @@ apple_library(
         "$SDKROOT/System/Library/Frameworks/MapKit.framework",
     ],
     deps = [
-        '//dependencies/Pods/RxSwift:RxSwift',
-        '//dependencies/Pods/RxCocoa:RxCocoa',
-        '//dependencies/Pods/Texture:Texture',
-        '//dependencies/Pods/IGListKit:IGListKit',
+        '//Dependencies/Pods/RxSwift:RxSwift',
+        '//Dependencies/Pods/RxCocoa:RxCocoa',
+        '//Dependencies/Pods/Texture:Texture',
+        '//Dependencies/Pods/IGListKit:IGListKit',
     ],
     visibility = [
         'PUBLIC'

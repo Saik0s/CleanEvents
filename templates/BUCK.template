@@ -47,8 +47,8 @@ apple_test(
     info_plist = 'Info.plist',
     test_host_app = ':Bundle',
     srcs = glob([
-        'tests/*.m',
-        'tests/*.swift',
+        'Tests/*.m',
+        'Tests/*.swift',
     ]),
     frameworks = [
         '$SDKROOT/System/Library/Frameworks/Foundation.framework',

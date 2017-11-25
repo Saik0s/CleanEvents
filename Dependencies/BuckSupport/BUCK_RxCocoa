@@ -15,7 +15,7 @@ apple_library(
         "**/*.h",
     ]),
     deps = [
-        '//dependencies/Pods/RxSwift:RxSwift'
+        '//Dependencies/Pods/RxSwift:RxSwift'
     ],
     visibility = [
         'PUBLIC'

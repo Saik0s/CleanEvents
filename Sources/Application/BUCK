@@ -26,8 +26,8 @@ apple_binary(
         "$SDKROOT/System/Library/Frameworks/UIKit.framework",
     ],
     deps = [
-        '//resources:AppResources',
-        '//sources/Core:Core'
+        '//Resources:AppReSources',
+        '//Sources/Core:Core'
     ],
 )
 

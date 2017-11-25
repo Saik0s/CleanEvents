@@ -5,16 +5,17 @@ excluded:
   - .build
   - .buckd
   - .vscode
+  - .history
   - buck-cache
   - buck-out
-  - dependencies
+  - Dependencies
   - fastlane
-  - resources
-  - scripts
-  - templates
-  - tests
-  - uitests
-  - sources/generated
+  - Resources
+  - Scripts
+  - Templates
+  - Tests
+  - UITests
+  - Sources/Generated
 whitelist_rules:
   # - closure_parameter_position
   - array_init

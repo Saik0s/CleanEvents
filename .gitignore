@@ -31,8 +31,8 @@
 *.swp
 
 # Cocoapods
-/dependencies/Pods/
-/dependencies/build/
+/Dependencies/Pods
+/Dependencies/build
 
 # Xcode
 *.xcworkspace

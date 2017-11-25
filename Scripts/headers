@@ -5,7 +5,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-cd "${0%/*}/../sources"
+cd "${0%/*}/../Sources"
 
 declare NAME='Igor Tarasenko'
 

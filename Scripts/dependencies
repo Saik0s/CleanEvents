@@ -5,7 +5,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-cd "${0%/*}/../dependencies"
+cd "${0%/*}/../Dependencies"
 
 # bundle exec pod repo update
 bundle exec pod install
