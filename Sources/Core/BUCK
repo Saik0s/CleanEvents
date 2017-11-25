@@ -1,30 +1,29 @@
 apple_library(
     name = "Core",
+    modular = True,
+    swift_version = "4",
+    configs = DEFAULT_BUILD_CONFIGURATIONS,
+    bridging_header = 'Core-Bridging-Header.h',
+    preprocessor_flags = [
+        '-fobjc-arc',
+    ],
+    linker_flags = [
+        '-lc++',
+    ],
     srcs = glob([
         "*.swift"
     ]),
     frameworks = [
         "$SDKROOT/System/Library/Frameworks/Foundation.framework",
         "$SDKROOT/System/Library/Frameworks/UIKit.framework",
+        "$SDKROOT/System/Library/Frameworks/Photos.framework",
+        "$SDKROOT/System/Library/Frameworks/MapKit.framework",
     ],
     deps = [
-        '//Dependencies/Pods/RxSwift:RxSwift',
-        '//Dependencies/Pods/RxCocoa:RxCocoa',
-    ],
-    visibility = [
-        'PUBLIC'
-    ],
-)
-
-apple_bundle(
-    name = "CoreFramework",
-    binary = ":Core#shared",
-    extension = "framework",
-    info_plist = "Info.plist",
-    product_name = "Core",
-    deps = [
-        '//Dependencies/Pods/RxSwift:RxSwift',
-        '//Dependencies/Pods/RxCocoa:RxCocoa',
+        '//dependencies/Pods/RxSwift:RxSwift',
+        '//dependencies/Pods/RxCocoa:RxCocoa',
+        '//dependencies/Pods/Texture:Texture',
+        '//dependencies/Pods/IGListKit:IGListKit',
     ],
     visibility = [
         'PUBLIC'

@@ -1,6 +1,12 @@
 apple_library(
     name = 'RxCocoa',
+    modular = True,
+    swift_version = "4",
+    configs = DEFAULT_BUILD_CONFIGURATIONS,
     bridging_header = 'RxCocoa-Bridging-Header.h',
+    preprocessor_flags = [
+        '-fobjc-arc',
+    ],
     srcs = glob([
         "**/*.swift",
         "**/*.m",
@@ -9,7 +15,7 @@ apple_library(
         "**/*.h",
     ]),
     deps = [
-        '//Dependencies/Pods/RxSwift:RxSwift'
+        '//dependencies/Pods/RxSwift:RxSwift'
     ],
     visibility = [
         'PUBLIC'

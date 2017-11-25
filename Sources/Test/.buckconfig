@@ -1,5 +1,0 @@
-[apple]
-    xctool_path = xctool/bin/xctool
-
-[cxx]
-    default_platform = macosx-x86_64

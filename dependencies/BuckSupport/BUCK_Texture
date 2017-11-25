@@ -1,0 +1,71 @@
+texture_configs = flatten_dicts(BASE_BUILD_CONFIGURATIONS, CPLUSPLUS_POD_CONFIGS)
+texture_configs['GCC_PRECOMPILE_PREFIX_HEADER'] = "YES"
+
+ASYNCDISPLAYKIT_EXPORTED_HEADERS = glob([
+    'Source/*.h',
+    'Source/Details/**/*.h',
+    'Source/Layout/*.h',
+    'Source/Base/*.h',
+    'Source/Debug/*.h',
+    'Source/TextKit/ASTextNodeTypes.h',
+    'Source/TextKit/ASTextKitComponents.h',
+])
+ASYNCDISPLAYKIT_PRIVATE_HEADERS = glob([
+    'Source/**/*.h'
+  ],
+  excludes = ASYNCDISPLAYKIT_EXPORTED_HEADERS,
+)
+
+apple_library(
+    name = 'Texture',
+    modular = True,
+    header_path_prefix = 'AsyncDisplayKit',
+    soname = 'libAsyncDisplayKit.$(ext)',
+    preprocessor_flags = [
+        '-fobjc-arc',
+        '-DDEBUG=1',
+    ],
+    lang_preprocessor_flags = {
+        'C': ['-std=gnu99'],
+        'CXX': ['-std=c++11', '-stdlib=libc++'],
+        'OBJCXX': ['-std=c++11', '-stdlib=libc++'],
+    },
+    linker_flags = [
+        '-lc++',
+        '-weak_framework',
+        'Photos',
+        '-weak_framework',
+        'MapKit',
+    ],
+    srcs = glob([
+        'Source/**/*.m',
+        'Source/**/*.mm',
+        'Source/Base/*.m'
+    ]),
+    exported_headers = ASYNCDISPLAYKIT_EXPORTED_HEADERS,
+    headers = ASYNCDISPLAYKIT_PRIVATE_HEADERS,
+    configs = {
+        'Debug': texture_configs,
+        'Release': texture_configs,
+    },
+    frameworks = [
+        '$SDKROOT/System/Library/Frameworks/Foundation.framework',
+        '$SDKROOT/System/Library/Frameworks/UIKit.framework',
+
+        '$SDKROOT/System/Library/Frameworks/QuartzCore.framework',
+        '$SDKROOT/System/Library/Frameworks/CoreMedia.framework',
+        '$SDKROOT/System/Library/Frameworks/CoreText.framework',
+        '$SDKROOT/System/Library/Frameworks/CoreGraphics.framework',
+        '$SDKROOT/System/Library/Frameworks/CoreLocation.framework',
+        '$SDKROOT/System/Library/Frameworks/AVFoundation.framework',
+
+        '$SDKROOT/System/Library/Frameworks/AssetsLibrary.framework',
+        '$SDKROOT/System/Library/Frameworks/MobileCoreServices.framework',
+    ],
+    deps = [
+        '//dependencies/Pods/IGListKit:IGListKit'
+    ],
+    visibility = [
+        'PUBLIC'
+    ],
+)

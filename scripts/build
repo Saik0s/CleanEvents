@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Downloads cocoapods dependencies 
+# Build script fo CI 
 
 set -euo pipefail
 IFS=$'\n\t'

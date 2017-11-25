@@ -1,5 +1,11 @@
 apple_library(
     name = 'RxTest',
+    modular = True,
+    swift_version = "4",
+    configs = DEFAULT_BUILD_CONFIGURATIONS,
+    preprocessor_flags = [
+        '-fobjc-arc',
+    ],
     srcs = glob([
         "**/*.swift",
     ]),
@@ -7,7 +13,7 @@ apple_library(
         "$PLATFORM_DIR/Developer/Library/Frameworks/XCTest.framework",
     ],
     deps = [
-        '//Dependencies/Pods/RxSwift:RxSwift'
+        '//dependencies/Pods/RxSwift:RxSwift'
     ],
     visibility = [
         'PUBLIC'

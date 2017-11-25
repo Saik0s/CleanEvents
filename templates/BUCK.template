@@ -2,7 +2,7 @@ apple_library(
     name = 'Library',
     modular = True,
     swift_version = "4",
-    swift_objc_bridging_header = 'Library-Bridging-Header.h',
+    bridging_header = 'Library-Bridging-Header.h',
     preprocessor_flags = [
         '-fobjc-arc', 
         '-Wno-objc-designated-initializers'

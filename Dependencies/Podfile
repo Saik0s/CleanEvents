@@ -21,7 +21,6 @@ abstract_target :Dependencies do
     
     # UI
     pod "Texture/IGListKit"
-    pod "Texture/Yoga"
 
     target :Empty
 end

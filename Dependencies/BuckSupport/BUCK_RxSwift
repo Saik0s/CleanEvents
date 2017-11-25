@@ -1,5 +1,11 @@
 apple_library(
     name = 'RxSwift',
+    modular = True,
+    swift_version = "4",
+    configs = DEFAULT_BUILD_CONFIGURATIONS,
+    preprocessor_flags = [
+        '-fobjc-arc',
+    ],
     srcs = glob([
         "**/*.swift",
     ]),
