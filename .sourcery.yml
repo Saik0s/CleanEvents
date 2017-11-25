@@ -1,8 +1,8 @@
 sources:
-  - Sources
+  - sources
 templates:
-  - Templates/Sourcery
+  - templates/Sourcery
 output:
-  Sources/Generated
+  sources/Generated
 args:
   name: val

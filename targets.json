@@ -1,0 +1,17 @@
+[
+{
+  "binary" : ":AppBinary",
+  "buck.base_path" : "sources/Application",
+  "buck.direct_dependencies" : [ "//sources/Application:AppBinary" ],
+  "buck.outputPath" : "buck-out/gen/sources/Application/App#dwarf-and-dsym,no-include-frameworks/CleanEvents.app",
+  "buck.ruleKey" : "05776089e33b9d692b296ea71c2856e6c6092bfb",
+  "buck.ruleType" : "apple_bundle",
+  "buck.type" : "apple_bundle",
+  "extension" : "app",
+  "fully_qualified_name" : "//sources/Application:App",
+  "infoPlist" : "Info.plist",
+  "name" : "App",
+  "productName" : "CleanEvents",
+  "visibility" : [ "PUBLIC" ]
+}
+]

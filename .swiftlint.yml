@@ -7,14 +7,14 @@ excluded:
   - .vscode
   - buck-cache
   - buck-out
-  - Dependencies
+  - dependencies
   - fastlane
-  - Resources
-  - Scripts
-  - Templates
-  - Tests
-  - UITests
-  - Sources/Generated
+  - resources
+  - scripts
+  - templates
+  - tests
+  - uitests
+  - sources/generated
 whitelist_rules:
   # - closure_parameter_position
   - array_init
