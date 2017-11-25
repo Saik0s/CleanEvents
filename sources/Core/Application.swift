@@ -13,8 +13,7 @@ public protocol ApplicationProtocol {
 
 public class Application: ApplicationProtocol {
     public let name: String  = "CleanEvents"
-    
+
     public init() {
-        
     }
 }
