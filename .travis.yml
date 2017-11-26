@@ -9,7 +9,7 @@ before_install:
   - brew tap facebook/fb
   - brew install buck
   - buck --version
-install: cd Dependencies && pod install
+install: cd Dependencies && pod install --repo-update
 script:
   - buck test
   - buck build app
