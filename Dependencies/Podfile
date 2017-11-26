@@ -1,8 +1,8 @@
 using_bundler = defined? Bundler
 unless using_bundler
-    puts "\nPlease re-run using:".red
-    puts "  bundle exec pod install\n\n"
-    exit(1)
+  puts "\nPlease re-run using:".red
+  puts "  bundle exec pod install\n\n"
+  exit(1)
 end
 
 source 'https://github.com/CocoaPods/Specs.git'
@@ -12,40 +12,47 @@ use_frameworks!
 inhibit_all_warnings!
 
 abstract_target :Dependencies do
-    
-    # ReactiveX
-    pod 'RxSwift',    git: 'https://github.com/ReactiveX/RxSwift.git' # '~> 4.0'
-    pod 'RxCocoa',    git: 'https://github.com/ReactiveX/RxSwift.git' # '~> 4.0'
-    pod 'RxBlocking', git: 'https://github.com/ReactiveX/RxSwift.git' # '~> 4.0'
-    pod 'RxTest',     git: 'https://github.com/ReactiveX/RxSwift.git' # '~> 4.0'
-    
-    # UI
-    pod "Texture/IGListKit"
+  # ReactiveX
+  pod 'RxSwift', git: 'https://github.com/ReactiveX/RxSwift.git' # '~> 4.0'
+  pod 'RxCocoa', git: 'https://github.com/ReactiveX/RxSwift.git' # '~> 4.0'
+  pod 'RxBlocking', git: 'https://github.com/ReactiveX/RxSwift.git' # '~> 4.0'
+  pod 'RxTest', git: 'https://github.com/ReactiveX/RxSwift.git' # '~> 4.0'
 
-    target :Empty
+  # UI
+  pod 'Texture/IGListKit'
+
+  target :Empty
 end
 
 install! 'cocoapods', integrate_targets: false
 
 post_install do |installer|
-    require 'fileutils'
+  require 'fileutils'
 
-    buck_files_dir = 'BuckSupport'
-    if File.directory?(buck_files_dir)
-        installer.pod_targets.flat_map do |pod_target|
-            pod_name = pod_target.pod_name
-            
-            # Copy related BUCK file for each Pod
-            buck_file = buck_files_dir + '/BUCK_' + pod_name
-            if File.file?(buck_file)
-                FileUtils.cp(buck_file, 'Pods/' + pod_name + '/BUCK', preserve: false)
-            end
-            
-            # Copy bridging header if exist
-            bridging_header = buck_files_dir + '/' + pod_name + '-Bridging-Header.h'
-            if File.file?(bridging_header)
-                FileUtils.cp(bridging_header, 'Pods/' + pod_name + '/' + pod_name + '-Bridging-Header.h', preserve: false)
-            end
-        end
+  buck_files_dir = 'BuckSupport'
+  if File.directory?(buck_files_dir)
+    installer.pod_targets.flat_map do |pod_target|
+      pod_name = pod_target.pod_name
+      pod_dir = 'Pods/' + pod_name
+
+      # Copy related BUCK file for each Pod
+      source_buck_file = buck_files_dir + '/BUCK_' + pod_name
+      result_buck_file = pod_dir + '/BUCK'
+      if File.file?(source_buck_file)
+        FileUtils.cp(source_buck_file,
+                     result_buck_file,
+                     preserve: false)
+      end
+
+      # Copy bridging header if exist
+      bridging_header_name = pod_name + '-Bridging-Header.h'
+      source_bridging_header = buck_files_dir + '/' + bridging_header_name
+      result_bridging_header = pod_dir + '/' + bridging_header_name
+      if File.file?(source_bridging_header)
+        FileUtils.cp(source_bridging_header,
+                     result_bridging_header,
+                     preserve: false)
+      end
     end
+  end
 end
