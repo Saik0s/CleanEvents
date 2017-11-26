@@ -8,22 +8,28 @@
 import UIKit
 import RxSwift
 import RxCocoa
-// import IGListKit 
-// import AsyncDisplayKit 
+import Action
+import Alamofire
+import Moya
+import MoyaSugar
+import NSObject_Rx
+import Result
+import RxOptional
+import RxSwiftExt
 
 @objc(AppDelegate)
 public class AppDelegate: UIResponder, UIApplicationDelegate {
-
     public var window: UIWindow?
-    let pub = PublishSubject<Void>()
+    let pub: PublishSubject<Void> = PublishSubject()
 
-    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        pub.bind { _ in
+    public func application(_ application: UIApplication, didFinishLaunchingWithOptions
+        launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        pub.bind {_ in
             print("Wow")
         }
         pub.onNext(())
         print("Test")
-        
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = ASNavigationController(
             navigationBarClass: nil,
@@ -34,4 +40,3 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

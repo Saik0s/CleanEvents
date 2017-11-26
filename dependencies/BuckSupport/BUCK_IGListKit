@@ -2,7 +2,6 @@ apple_library(
     name = 'IGListKit',
     modular = True,
     preprocessor_flags = [
-        '-fobjc-arc',
         '-DDEBUG=1',
     ],
     lang_preprocessor_flags = {
@@ -12,7 +11,7 @@ apple_library(
     },
     linker_flags = [
         '-lc++',
-        '-framework', 
+        '-framework',
         'UIKit'
     ],
     configs = {
@@ -31,20 +30,20 @@ apple_library(
         'Source/Internal/*.h',
         'Source/Common/Internal/*.h',
     ]),
-    frameworks = [
-        '$SDKROOT/System/Library/Frameworks/Foundation.framework',
-        '$SDKROOT/System/Library/Frameworks/UIKit.framework',
+    # frameworks = [
+    #     '$SDKROOT/System/Library/Frameworks/Foundation.framework',
+    #     '$SDKROOT/System/Library/Frameworks/UIKit.framework',
 
-        '$SDKROOT/System/Library/Frameworks/QuartzCore.framework',
-        '$SDKROOT/System/Library/Frameworks/CoreMedia.framework',
-        '$SDKROOT/System/Library/Frameworks/CoreText.framework',
-        '$SDKROOT/System/Library/Frameworks/CoreGraphics.framework',
-        '$SDKROOT/System/Library/Frameworks/CoreLocation.framework',
-        '$SDKROOT/System/Library/Frameworks/AVFoundation.framework',
+    #     '$SDKROOT/System/Library/Frameworks/QuartzCore.framework',
+    #     '$SDKROOT/System/Library/Frameworks/CoreMedia.framework',
+    #     '$SDKROOT/System/Library/Frameworks/CoreText.framework',
+    #     '$SDKROOT/System/Library/Frameworks/CoreGraphics.framework',
+    #     '$SDKROOT/System/Library/Frameworks/CoreLocation.framework',
+    #     '$SDKROOT/System/Library/Frameworks/AVFoundation.framework',
 
-        '$SDKROOT/System/Library/Frameworks/AssetsLibrary.framework',
-        '$SDKROOT/System/Library/Frameworks/MobileCoreServices.framework',
-    ],
+    #     '$SDKROOT/System/Library/Frameworks/AssetsLibrary.framework',
+    #     '$SDKROOT/System/Library/Frameworks/MobileCoreServices.framework',
+    # ],
     visibility = [
         'PUBLIC'
     ],

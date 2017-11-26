@@ -1,0 +1,20 @@
+apple_library(
+    name = 'MoyaSugar',
+    modular = True,
+    swift_version = '4',
+    configs = DEFAULT_BUILD_CONFIGURATIONS,
+    srcs = glob([
+        '**/*.swift',
+    ]),
+    deps = [
+        '//Dependencies/Pods/Alamofire:Alamofire',
+        '//Dependencies/Pods/RxSwift:RxSwift',
+        '//Dependencies/Pods/Result:Result',
+        '//Dependencies/Pods/Moya:Moya',
+    ],
+    visibility = [
+        'PUBLIC'
+    ],
+)
+
+

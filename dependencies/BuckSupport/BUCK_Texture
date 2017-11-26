@@ -48,20 +48,20 @@ apple_library(
         'Debug': texture_configs,
         'Release': texture_configs,
     },
-    frameworks = [
-        '$SDKROOT/System/Library/Frameworks/Foundation.framework',
-        '$SDKROOT/System/Library/Frameworks/UIKit.framework',
+    # frameworks = [
+    #     '$SDKROOT/System/Library/Frameworks/Foundation.framework',
+    #     '$SDKROOT/System/Library/Frameworks/UIKit.framework',
 
-        '$SDKROOT/System/Library/Frameworks/QuartzCore.framework',
-        '$SDKROOT/System/Library/Frameworks/CoreMedia.framework',
-        '$SDKROOT/System/Library/Frameworks/CoreText.framework',
-        '$SDKROOT/System/Library/Frameworks/CoreGraphics.framework',
-        '$SDKROOT/System/Library/Frameworks/CoreLocation.framework',
-        '$SDKROOT/System/Library/Frameworks/AVFoundation.framework',
+    #     '$SDKROOT/System/Library/Frameworks/QuartzCore.framework',
+    #     '$SDKROOT/System/Library/Frameworks/CoreMedia.framework',
+    #     '$SDKROOT/System/Library/Frameworks/CoreText.framework',
+    #     '$SDKROOT/System/Library/Frameworks/CoreGraphics.framework',
+    #     '$SDKROOT/System/Library/Frameworks/CoreLocation.framework',
+    #     '$SDKROOT/System/Library/Frameworks/AVFoundation.framework',
 
-        '$SDKROOT/System/Library/Frameworks/AssetsLibrary.framework',
-        '$SDKROOT/System/Library/Frameworks/MobileCoreServices.framework',
-    ],
+    #     '$SDKROOT/System/Library/Frameworks/AssetsLibrary.framework',
+    #     '$SDKROOT/System/Library/Frameworks/MobileCoreServices.framework',
+    # ],
     deps = [
         '//Dependencies/Pods/IGListKit:IGListKit'
     ],

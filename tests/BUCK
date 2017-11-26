@@ -1,13 +1,22 @@
 apple_test(
     name = 'AppTests',
-    deps = [
-        '//Sources/Core:Core'
-    ],
-    srcs = glob(['*.swift']),
     info_plist = 'InfoTests.plist',
+    swift_version = "4",
+    srcs = glob([
+        '*.swift'
+    ]),
+    deps = [
+        '//Sources/Core:Core',
+        '//Dependencies/Pods/RxSwift:RxSwift',
+        '//Dependencies/Pods/RxCocoa:RxCocoa',
+        '//Dependencies/Pods/RxBlocking:RxBlocking',
+        '//Dependencies/Pods/RxTest:RxTest',
+    ],
     frameworks = [
         '$SDKROOT/System/Library/Frameworks/Foundation.framework',
         '$PLATFORM_DIR/Developer/Library/Frameworks/XCTest.framework'
     ],
-    visibility = ['PUBLIC'],
+    visibility = [
+        'PUBLIC'
+    ],
 )

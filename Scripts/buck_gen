@@ -81,16 +81,16 @@ END
 }
 
 create_file() {
-   library_template $1 >"BuckSupport/BUCK_$1"
-   echo "Added BuckSupport/BUCK_$1"
+   #library_template $1 >"BuckSupport/BUCK_$1"
+   echo "$1"
 }
 
 let $# && { create_file $1; exit 0; }
 
 ls -1A Pods | while read line; do
     if ! [[ "$line" =~ ^(Headers|Local Podspecs|Target Support Files|Pods.xcodeproj|Manifest.lock)$ ]]; then
-        if ! [[ -e BuckSupport/BUCK_$line ]]; then
+    #    if ! [[ -e BuckSupport/BUCK_$line ]]; then
             create_file $line
-        fi
+   #     fi
     fi
 done

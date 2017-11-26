@@ -18,14 +18,35 @@ apple_library(
         "$SDKROOT/System/Library/Frameworks/UIKit.framework",
         "$SDKROOT/System/Library/Frameworks/Photos.framework",
         "$SDKROOT/System/Library/Frameworks/MapKit.framework",
+
+        '$SDKROOT/System/Library/Frameworks/QuartzCore.framework',
+        '$SDKROOT/System/Library/Frameworks/CoreMedia.framework',
+        '$SDKROOT/System/Library/Frameworks/CoreText.framework',
+        '$SDKROOT/System/Library/Frameworks/CoreGraphics.framework',
+        '$SDKROOT/System/Library/Frameworks/CoreLocation.framework',
+        '$SDKROOT/System/Library/Frameworks/AVFoundation.framework',
+
+        '$SDKROOT/System/Library/Frameworks/AssetsLibrary.framework',
+        '$SDKROOT/System/Library/Frameworks/MobileCoreServices.framework',
     ],
     deps = [
+        '//Dependencies/Pods/Action:Action',
+        '//Dependencies/Pods/Alamofire:Alamofire',
+        '//Dependencies/Pods/IGListKit:IGListKit',
+        '//Dependencies/Pods/Moya:Moya',
+        '//Dependencies/Pods/MoyaSugar:MoyaSugar',
+        '//Dependencies/Pods/NSObject+Rx:NSObject_Rx',
+        '//Dependencies/Pods/Result:Result',
         '//Dependencies/Pods/RxSwift:RxSwift',
         '//Dependencies/Pods/RxCocoa:RxCocoa',
+        '//Dependencies/Pods/RxOptional:RxOptional',
+        '//Dependencies/Pods/RxSwiftExt:RxSwiftExt',
         '//Dependencies/Pods/Texture:Texture',
-        '//Dependencies/Pods/IGListKit:IGListKit',
     ],
     visibility = [
         'PUBLIC'
+    ],
+    tests = [
+        '//Tests:AppTests'
     ],
 )
