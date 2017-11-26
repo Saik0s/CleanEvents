@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# Updates CHANGELOG.md 
+
+set -euo pipefail
+IFS=$'\n\t'
+
+cd "${0%/*}/.."
+
+bundle exec github_changelog_generator -u Saik0s -p CleanEvents github_changelog_generator github_username/github_project
