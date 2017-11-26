@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+#
+# Generates new BUCK file with library template
+# using given as an agrument name
+
+set -euo pipefail
+IFS=$'\n\t'
+
+cd "${0%/*}/../Dependencies"
+
+library_template() {
+	cat <<END
+apple_library(
+    name = '$1',
+    modular = True,
+    swift_version = '4',
+    bridging_header = '$1-Bridging-Header.h',
+    header_path_prefix = '$1',
+    soname = 'lib$1.\$(ext)',
+    preprocessor_flags = [
+        '-fobjc-arc',
+        '-Wno-objc-designated-initializers'
+    ],
+    lang_preprocessor_flags = {
+        'C': ['-std=gnu99'],
+        'CXX': ['-std=c++11', '-stdlib=libc++'],
+        'OBJCXX': ['-std=c++11', '-stdlib=libc++'],
+    },
+    linker_flags = [
+        '-lc++',
+        '-weak_framework',
+        'Photos',
+        '-weak_framework',
+        'MapKit',
+    ],
+    srcs = glob([
+        '**/*.m',
+        '**/*.mm',
+        '**/*.swift',
+    ], excludes = [
+        '**/*.swift'
+    ]),
+    headers = glob([
+        '**/*.h',
+    ], excludes = [
+        '**/*.h'
+    ]),
+    configs = {
+        'Debug': {
+            'EMBEDDED_CONTENT_CONTAINS_SWIFT': 'YES',
+            'SUPPORTED_PLATFORMS': "iphonesimulator iphoneos",
+        },
+        'Release': {
+            'EMBEDDED_CONTENT_CONTAINS_SWIFT': 'YES',
+            'SUPPORTED_PLATFORMS': "iphonesimulator iphoneos",
+        },
+    }
+    frameworks = [
+        '\$SDKROOT/System/Library/Frameworks/Foundation.framework',
+        '\$SDKROOT/System/Library/Frameworks/UIKit.framework',
+
+        '\$SDKROOT/System/Library/Frameworks/QuartzCore.framework',
+        '\$SDKROOT/System/Library/Frameworks/CoreMedia.framework',
+        '\$SDKROOT/System/Library/Frameworks/CoreText.framework',
+        '\$SDKROOT/System/Library/Frameworks/CoreGraphics.framework',
+        '\$SDKROOT/System/Library/Frameworks/CoreLocation.framework',
+        '\$SDKROOT/System/Library/Frameworks/AVFoundation.framework',
+
+        '\$SDKROOT/System/Library/Frameworks/AssetsLibrary.framework',
+        '\$SDKROOT/System/Library/Frameworks/MobileCoreServices.framework',
+    ],
+    deps = [
+        ':BuckDemoAppResources',
+        '//common:hello'
+    ],
+    visibility = [
+        'PUBLIC'
+    ],
+)
+END
+}
+
+create_file() {
+   library_template $1 >"BuckSupport/BUCK_$1"
+   echo "Added BuckSupport/BUCK_$1"
+}
+
+let $# && { create_file $1; exit 0; }
+
+ls -1A Pods | while read line; do
+    if ! [[ "$line" =~ ^(Headers|Local Podspecs|Target Support Files|Pods.xcodeproj|Manifest.lock)$ ]]; then
+        if ! [[ -e BuckSupport/BUCK_$line ]]; then
+            create_file $line
+        fi
+    fi
+done
