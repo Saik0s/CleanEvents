@@ -1,3 +1,4 @@
+tap "facebook/fb"
 brew "sourcery"
 brew "swiftlint"
 brew "buck"

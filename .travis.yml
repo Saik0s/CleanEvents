@@ -5,7 +5,8 @@ osx_image: xcode9
 cache:
   - bundler
   - cocoapods
-install:
+before_install:
+  - brew update
   - ./Scripts/bootstrap
 script:
   - buck tests
