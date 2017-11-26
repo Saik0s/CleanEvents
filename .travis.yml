@@ -11,7 +11,7 @@ before_install:
   - brew install buck
   - buck --version
 script:
-  - buck tests
+  - buck test
   - buck build app
 branches:
   only:
