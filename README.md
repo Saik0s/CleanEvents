@@ -8,11 +8,13 @@
   :construction:Under Development:construction:
 </h3>
 
-<!---
 [![GitHub release](https://img.shields.io/github/release/Saik0s/CleanEvents.svg)](https://github.com/Saik0s/CleanEvents/releases)
 [![Build Status](https://img.shields.io/travis/Saik0s/CleanEvents/master.svg?style=flat)](https://travis-ci.org/Saik0s/CleanEvents)
-[![codecov](https://codecov.io/gh/Saik0s/CleanEvents/branch/master/graph/badge.svg)](https://codecov.io/gh/Saik0s/CleanEvents)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/Saik0s/CleanEvents/blob/master/LICENSE)
+[![codebeat badge](https://codebeat.co/badges/4d4c151e-2af3-40cc-8514-a98b8e6c1d8a)](https://codebeat.co/projects/github-com-saik0s-cleanevents-master)
+
+<!---
+[![codecov](https://codecov.io/gh/Saik0s/CleanEvents/branch/master/graph/badge.svg)](https://codecov.io/gh/Saik0s/CleanEvents)
 --->
 
 `CleanEvents` is my minimum viable product for experimenting with different approaches in software architecture. The primary goal of this project is to create and combine solutions which in my opinion are the most accurate in meeting my requirements.  Overall this project must be like a draft with solutions for the most common problems so that it can be used as a start point in any application development process. It must follow SOLID and DRY principles, be very easy to read, clean, devoid of ambiguity, easily scalable in an obvious way, developed using TDD approach and at the same time provide perfect development experience.
