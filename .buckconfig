@@ -1,13 +1,35 @@
-[project]
-    ide = xcode
+[buildfile]
+    includes = //DEFS
 [cxx]
     default_platform = iphonesimulator-x86_64
-    ldflags = -framework Foundation -ObjC
-    cflags = -g
-[cache]
-    mode = dir
+    cflags = -fobjc-arc -Wno-deprecated -Wno-conversion
+    cxxflags = -Wundeclared-selector -Wno-objc-designated-initializers
+    combined_preprocess_and_compile = true
+[swift]
+    version = 4.0
+    compiler_flags = -suppress-warnings -enable-testing
 [apple]
-    default_debug_info_format_for_binaries = dwarf_and_dsym
-    default_debug_info_format_for_libraries = dwarf_and_dsym
-    default_debug_info_format_for_tests = dwarf_and_dsym
+    xctool_default_destination_specifier = platform=iOS Simulator, name=iPhone 8, OS=11.1
     iphonesimulator_target_sdk_version = 10.0
+    iphoneos_target_sdk_version = 10.0
+    default_debug_info_format_for_binaries = NONE
+    default_debug_info_format_for_libraries = NONE
+    default_debug_info_format_for_tests = NONE
+    generate_missing_umbrella_headers = true
+    use_header_maps_in_xcode = false
+    use_swift_delegate = false
+    xctool_path = /usr/local/bin/xctool
+[alias]
+    app = //Sources/Application:App
+    core = //Sources/Core:Core
+    tests = //Tests:Tests
+    uitests = //UITests:UITests
+[httpserver]
+    port = 8080
+[doctor]
+    protocol = json
+    endpoint_url = http://localhost:4545
+[project]
+    ide_force_kill = always
+    ide = xcode
+    ignore = .git, .idea

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
+#
+# Setup environment for this project
 
-set -e
+set -euo pipefail
+IFS=$'\n\t'
 
-cd "$(dirname "$0")/.."
-
-Scripts/bootstrap
+${0%/*}/bootstrap

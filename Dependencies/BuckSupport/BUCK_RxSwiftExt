@@ -1,0 +1,20 @@
+apple_library(
+    name = 'RxSwiftExt',
+    modular = True,
+    swift_version = '4',
+    configs = DEFAULT_BUILD_CONFIGURATIONS,
+    srcs = glob([
+        '**/*.swift',
+    ]),
+    frameworks = [
+        "$SDKROOT/System/Library/Frameworks/Foundation.framework",
+    ],
+    deps = [
+        '//Dependencies/Pods/RxSwift:RxSwift',
+        '//Dependencies/Pods/RxCocoa:RxCocoa'
+    ],
+    visibility = [
+        'PUBLIC'
+    ],
+)
+

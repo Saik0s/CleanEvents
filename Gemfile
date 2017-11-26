@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
 gem 'cocoapods'
-gem 'cocoapods-rome'
+gem 'github_changelog_generator'
+gem 'jazzy'

@@ -1,36 +1,35 @@
 //
-//  CakeManiaTests.swift
-//  CakeManiaTests
-//
-//  Created by Maxim Khatskevich on 11/25/16.
-//  Copyright © 2016 CakeMania Inc. All rights reserved.
+// Main.swift
+// Created by Igor Tarasenko on 18/11/17
+// Copyright © 2017 Igor Tarasenko
+// Licensed under the MIT license, see LICENSE file
 //
 
 import XCTest
-@testable import CakeMania
+@testable import Core
 
 class CakeManiaTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+
+override func setUp() {
+super.setUp()
+// Put setup code here. This method is called before the invocation of each test method in the class.
+}
+
+override func tearDown() {
+// Put teardown code here. This method is called after the invocation of each test method in the class.
+super.tearDown()
+}
+
+func testExample() {
+// This is an example of a functional test case.
+// Use XCTAssert and related functions to verify your tests produce the correct results.
+}
+
+func testPerformanceExample() {
+// This is an example of a performance test case.
+self.measure {
+// Put the code you want to measure the time of here.
+}
+}
+
 }

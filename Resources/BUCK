@@ -3,18 +3,30 @@ apple_resource(
     dirs=[
         'Animations',
         'Fonts',
-        'Localization',
-        'Nibs',
-        'Storyboards',
+        'Localizations',
         'Styles',
     ],
-    files=[],
-    visibility=['PUBLIC']
+    files=[
+    ],
+    visibility=[
+        'PUBLIC'
+    ],
 )
 
 apple_asset_catalog(
     name='AppAssets',
-    dirs=['Images/Media.xcassets'],
     app_icon='AppIcon',
-    visibility=['PUBLIC']
+    dirs=[
+        'Images.xcassets'
+    ],
+    visibility=[
+        'PUBLIC'
+    ]
+)
+
+export_file(
+    name = "BNDLInfo.plist",
+    visibility = [
+        "PUBLIC"
+    ],
 )

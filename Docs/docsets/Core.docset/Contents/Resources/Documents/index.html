@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Core  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Core  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">Core Docs</a> (0% documented)</p>
+        <p class="header-right"><a href="https://github.com/Saik0s/CleanEvents"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">Core Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Core  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/AppDelegate.html">AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Application.html">Application</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/ApplicationProtocol.html">ApplicationProtocol</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h3 align="center">
+  <img src="assets/logo.png" alt="CleanEvents Logo" width=500 />
+</h3>
+<h1 id='cleanevents' class='heading'>CleanEvents</h1>
+
+<h3 align="center">
+  :construction:Under Development:construction:
+</h3>
+
+<!---
+[![GitHub release](https://img.shields.io/github/release/Saik0s/CleanEvents.svg)](https://github.com/Saik0s/CleanEvents/releases)
+[![Build Status](https://img.shields.io/travis/Saik0s/CleanEvents/master.svg?style=flat)](https://travis-ci.org/Saik0s/CleanEvents)
+[![codecov](https://codecov.io/gh/Saik0s/CleanEvents/branch/master/graph/badge.svg)](https://codecov.io/gh/Saik0s/CleanEvents)
+[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/Saik0s/CleanEvents/blob/master/LICENSE)
+--->
+
+<p><code>CleanEvents</code> is my minimum viable product for experimenting with different approaches in software architecture. The primary goal of this project is to create and combine solutions which in my opinion are the most accurate in meeting my requirements.  Overall this project must be like a draft with solutions for the most common problems so that it can be used as a start point in any application development process. It must follow SOLID and DRY principles, be very easy to read, clean, devoid of ambiguity, easily scalable in an obvious way, developed using TDD approach and at the same time provide perfect development experience.</p>
+
+<p>If automatizing some steps can create required solutions - the developer has to automize implementation process razer then implement it by hands. I believe that such approach will help developers never to lose their enthusiasm while working on a long-term project and as a result, it will help to keep a high quality of their solutions on every stage of the project.</p>
+<h2 id='prerequisites' class='heading'>Prerequisites</h2>
+
+<p>First of all, you need to have <code>bundler</code> ruby gem and <code>homebrew</code> CLI installed on your system. Then you can install dependencies described in <code>Brewfile</code> and <code>Gemfile</code>.
+<code>Cocoapods</code> gem is used to manage application dependencies.</p>
+<h2 id='downloading-the-code' class='heading'>Downloading the Code</h2>
+
+<p>To install bundler simply run the following command in the terminal:</p>
+<pre class="highlight shell"><code>gem install bundler
+</code></pre>
+
+<p>To install <code>Homebrew</code> run:</p>
+<pre class="highlight shell"><code>/usr/bin/ruby -e <span class="s2">"</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">"</span>
+</code></pre>
+
+<p>The following commands will clone project and set up all required dependencies.</p>
+<pre class="highlight shell"><code>git clone https://github.com/Saik0s/CleanEvents.git
+<span class="nb">cd </span>CleanEvents
+Scripts/setup
+</code></pre>
+<h2 id='getting-started' class='heading'>Getting Started</h2>
+
+<p>As soon as <code>setup</code> script finish installation and configuration of all required dependencies you will be able to build and run project using <a href="https://buckbuild.com/">BUCK</a></p>
+
+<p>Currently, the project is compatible with <code>Xcode 9</code> and later only, as it&rsquo;s <code>Swift 4</code>. I prefer to use <code>Appcode</code> mostly because it dramatically simplifies refactoring and code generation. Also, there are a lot of useful plugins which can be easily installed from the builtin plugins browser. Furthermore, Appcode itself has a wide range of preferences and configurations.</p>
+
+<p><code>Swiftlint</code> CLI helps to keep the same code style among the project and can point to different mistakes or suggest a better approach in some cases. Also it can fix some trivial issues by itself.</p>
+
+<p><code>Sourcery</code> generates code using templates. It takes care of trivial solutions and lets developers focus on real problems. For example, it can generate <code>Equatable</code> protocol implementation and updates it every time you change related struct for example.</p>
+
+<p>This project does not use storyboards, xibs, and auto layouts. UI is created using <code>Texture</code> framework from Pinterest (ex <code>AsyncDisplayKit</code> from Facebook). It is built on top of UIKit and provides an ability to create smooth interfaces, even if it is very complex. Instead of slow UIKit’s Auto Layout, it implements own solution hardly inspired by CSS Flexbox.</p>
+<h2 id='installing' class='heading'>Installing</h2>
+
+<p>To install and run application on simulator use:</p>
+<pre class="highlight shell"><code>buck install app -r -e -n <span class="s2">"iPhone 8"</span>
+</code></pre>
+
+<p>To regenerate project file run:</p>
+<pre class="highlight shell"><code>buck project
+</code></pre>
+<h2 id='running-unit-tests' class='heading'>Running unit tests</h2>
+
+<p>To run tests use:</p>
+<pre class="highlight shell"><code>buck <span class="nb">test</span>
+</code></pre>
+
+<!---
+## Deployment
+
+`Fastlane` is used to automate whole deployment process including test builds and app store builds with iTunes processing status checking.
+--->
+<h2 id='questions' class='heading'>Questions</h2>
+
+<p>If you have questions about any aspect of this project, please feel free to
+<a href="https://github.com/Saik0s/CleanEvents/issues/new">open an issue</a>. We&rsquo;d love to hear
+from you!</p>
+<h2 id='contributing' class='heading'>Contributing</h2>
+
+<p>Any pull requests are welcome.</p>
+<h2 id='commit-emoji-convention' class='heading'>Commit emoji convention</h2>
+
+<ul>
+<li><a href="https://github.com/carloscuesta/gitmoji/">gitmoji</a></li>
+</ul>
+<h2 id='versioning' class='heading'>Versioning</h2>
+
+<p>We use <a href="http://semver.org/">SemVer</a> for versioning. For the versions available, see the <a href="https://github.com/Saik0s/CleanEvents/tags">tags on this repository</a>.</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>This project is licensed under the MIT License - see the <a href="LICENSE.md">LICENSE.md</a> file for details</p>
+<h2 id='acknowledgments' class='heading'>Acknowledgments</h2>
+
+<ul>
+<li><a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html">The Clean Architecture by Uncle Bob</a></li>
+<li><a href="https://buckbuild.com/">BUCK - high-performance build tool</a></li>
+<li><a href="http://texturegroup.org/">Texture - iOS framework built on top of UIKit</a></li>
+<li><a href="https://github.com/RxSwiftCommunity">RxSwift Community</a></li>
+</ul>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="http://igortarasenko.me" target="_blank" rel="external">Igor Tarasenko</a>. All rights reserved. (Last updated: 2017-11-26)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

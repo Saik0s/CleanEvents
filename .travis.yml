@@ -1,0 +1,15 @@
+os:
+- osx
+language: generic
+osx_image: xcode9
+cache:
+  - bundler
+  - cocoapods
+install:
+  - ./Scripts/bootstrap
+script:
+  - buck tests
+  - buck build app
+branches:
+  only:
+    - master

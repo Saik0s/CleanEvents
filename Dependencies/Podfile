@@ -1,28 +1,66 @@
-source 'https://github.com/CocoaPods/Specs'
+using_bundler = defined? Bundler
+unless using_bundler
+  puts "\nPlease re-run using:".red
+  puts "  bundle exec pod install\n\n"
+  exit(1)
+end
+
+source 'https://github.com/CocoaPods/Specs.git'
+
 platform :ios, 9.3
 use_frameworks!
-plugin 'cocoapods-rome'
+inhibit_all_warnings!
 
 abstract_target :Dependencies do
+  # ReactiveX
+  pod 'RxSwift' #, git: 'https://github.com/ReactiveX/RxSwift.git'
+  pod 'RxCocoa' #, git: 'https://github.com/ReactiveX/RxSwift.git'
+  pod 'RxBlocking' #, git: 'https://github.com/ReactiveX/RxSwift.git'
+  pod 'RxTest' #, git: 'https://github.com/ReactiveX/RxSwift.git'
+  pod 'RxSwiftExt/RxCocoa' #, git: 'https://github.com/RxSwiftCommunity/RxSwiftExt.git'
+  pod 'RxOptional' #, git: 'https://github.com/RxSwiftCommunity/RxOptional.git'
+  pod 'Action' #, git: 'https://github.com/RxSwiftCommunity/Action.git'
+  pod 'NSObject+Rx' #, git: 'https://github.com/RxSwiftCommunity/NSObject-Rx.git'
+  # pod 'RxNimble' #, git: 'https://github.com/RxSwiftCommunity/RxNimble.git'
 
-    pod 'RxSwift'
-    pod 'RxCocoa'
+  # UI
+  pod 'Texture/IGListKit' #, git: 'https://github.com/texturegroup/texture.git'
 
-    target :Empty
+  # Network
+  pod 'MoyaSugar/RxSwift' #, git: 'https://github.com/devxoul/MoyaSugar.git'
+
+  target :Empty
 end
 
 install! 'cocoapods', integrate_targets: false
 
 post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        target.build_configurations.each do |config|
-            config.build_settings['LD'] = "#{Dir.pwd}/ld.py"
-            config.build_settings['CLANG_ENABLE_MODULES'] = 'YES'
-            config.build_settings['DEFINES_MODULE'] = 'YES'
-            config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
-            config.build_settings['ALWAYS_SEARCH_USER_PATHS'] = 'NO'
-            config.build_settings['ENABLE_BITCODE'] = 'NO'
-            config.build_settings['DEBUG_INFORMATION_FORMAT'] = 'dwarf'
-        end
+  require 'fileutils'
+
+  buck_files_dir = 'BuckSupport'
+  if File.directory?(buck_files_dir)
+    installer.pod_targets.flat_map do |pod_target|
+      pod_name = pod_target.pod_name
+      pod_dir = 'Pods/' + pod_name
+
+      # Copy related BUCK file for each Pod
+      source_buck_file = buck_files_dir + '/BUCK_' + pod_name
+      result_buck_file = pod_dir + '/BUCK'
+      if File.file?(source_buck_file)
+        FileUtils.cp(source_buck_file,
+                     result_buck_file,
+                     preserve: false)
+      end
+
+      # Copy bridging header if exist
+      bridging_header_name = pod_name + '-Bridging-Header.h'
+      source_bridging_header = buck_files_dir + '/' + bridging_header_name
+      result_bridging_header = pod_dir + '/' + bridging_header_name
+      if File.file?(source_bridging_header)
+        FileUtils.cp(source_bridging_header,
+                     result_bridging_header,
+                     preserve: false)
+      end
     end
+  end
 end

@@ -1,0 +1,33 @@
+apple_library(
+    name = 'Nimble',
+    modular = True,
+    swift_version = '4',
+    bridging_header = 'Nimble-Bridging-Header.h',
+    configs = DEFAULT_BUILD_CONFIGURATIONS,
+    linker_flags = [
+        '-weak-lswiftXCTest',
+        '-weak_framework',
+        'XCTest'
+    ],
+    srcs = glob([
+        '**/*.c',
+        '**/*.m',
+        '**/*.mm',
+        '**/*.swift',
+    ]),
+    exported_headers = glob([
+        '**/*.h',
+    ], excludes = [
+        'Sources/NimbleObjectiveC/CurrentTestCaseTracker.h'
+    ]),
+    headers = [
+        'Sources/NimbleObjectiveC/CurrentTestCaseTracker.h'
+    ],
+    frameworks = [
+        '$SDKROOT/System/Library/Frameworks/Foundation.framework',
+        '$PLATFORM_DIR/Developer/Library/Frameworks/XCTest.framework',
+    ],
+    visibility = [
+        'PUBLIC'
+    ],
+)

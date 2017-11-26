@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#
+# Builds documentation from sources
+
+set -euo pipefail
+IFS=$'\n\t'
+
+if ! which jazzy >/dev/null; then
+  echo "Jazzy not detected: You can download it from https://github.com/realm/jazzy"
+  exit
+fi
+
+# Docs by jazzy
+# https://github.com/realm/jazzy
+# ------------------------------
+jazzy \
+	--clean \
+	--author 'Igor Tarasenko' \
+    --author_url 'http://igortarasenko.me' \
+    --github_url 'https://github.com/Saik0s/CleanEvents' \
+    --source-directory Sources/Core \
+    --sdk iphonesimulator \
+    --module Core \
+    --readme README.md \
+    --output Docs

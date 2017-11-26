@@ -1,0 +1,17 @@
+apple_library(
+    name = 'RxNimble',
+    modular = True,
+    swift_version = '4',
+    configs = DEFAULT_BUILD_CONFIGURATIONS,
+    srcs = glob([
+        '**/*.swift',
+    ]),
+    deps = [
+        '//Dependencies/Pods/RxSwift:RxSwift',
+        '//Dependencies/Pods/Nimble:Nimble',
+        '//Dependencies/Pods/RxCocoa:RxCocoa',
+    ],
+    visibility = [
+        'PUBLIC'
+    ],
+)
