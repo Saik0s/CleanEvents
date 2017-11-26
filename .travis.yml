@@ -1,12 +1,15 @@
-language:  swift
+os:
+- osx
+language: generic
+osx_image: xcode9
 cache:
   - bundler
   - cocoapods
-osx_image: xcode8.3
-git:
-  depth:   10
-install:   echo "<3"
-script:    ./Scripts/build
+install:
+  - ./Scripts/bootstrap
+script:
+  - buck tests
+  - buck build app
 branches:
   only:
     - master
