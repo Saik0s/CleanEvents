@@ -1,8 +1,0 @@
-author:               Igor Tarasenko 
-author_url:           http://igortarasenko.me/
-github_url:           https://github.com/Saik0s/CleanEvents
-root_url:             https://saik0s.github.io/CleanEvents/
-module:               CleanEvents
-output:               docs
-theme:                fullwidth
-xcodebuild_arguments: [-workspace, 'Application.xcworkspace']
