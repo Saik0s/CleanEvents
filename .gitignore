@@ -41,6 +41,7 @@
 # Other
 *.mdj
 codealike.json
+build
 
 # VS Code
 /.history

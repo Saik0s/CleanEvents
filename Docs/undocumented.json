@@ -1,0 +1,61 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/Saik0s/Documents/Projects/github/clean-events/Sources/Core/AppDelegate.swift",
+      "line": 21,
+      "symbol": "AppDelegate",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Saik0s/Documents/Projects/github/clean-events/Sources/Core/AppDelegate.swift",
+      "line": 22,
+      "symbol": "AppDelegate.window",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Saik0s/Documents/Projects/github/clean-events/Sources/Core/AppDelegate.swift",
+      "line": 25,
+      "symbol": "AppDelegate.application(_:didFinishLaunchingWithOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Saik0s/Documents/Projects/github/clean-events/Sources/Core/Application.swift",
+      "line": 10,
+      "symbol": "ApplicationProtocol",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Saik0s/Documents/Projects/github/clean-events/Sources/Core/Application.swift",
+      "line": 11,
+      "symbol": "ApplicationProtocol.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Saik0s/Documents/Projects/github/clean-events/Sources/Core/Application.swift",
+      "line": 14,
+      "symbol": "Application",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Saik0s/Documents/Projects/github/clean-events/Sources/Core/Application.swift",
+      "line": 15,
+      "symbol": "Application.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Saik0s/Documents/Projects/github/clean-events/Sources/Core/Application.swift",
+      "line": 17,
+      "symbol": "Application.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/Saik0s/Documents/Projects/github/clean-events/Sources/Core"
+}
