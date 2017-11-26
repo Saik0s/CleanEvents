@@ -2,7 +2,6 @@ os:
   - osx
 language: generic
 osx_image: xcode9.1
-podfile: Dependencies/Podfile
 cache:
   - bundler
   - cocoapods
@@ -10,6 +9,7 @@ before_install:
   - brew tap facebook/fb
   - brew install buck
   - buck --version
+install: cd Dependencies && pod install
 script:
   - buck test
   - buck build app
