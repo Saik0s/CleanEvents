@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Fix header comments in source files 
+# Fix header comments in source files
 
 set -euo pipefail
 IFS=$'\n\t'
@@ -24,7 +24,7 @@ header_comment() {
 	// $1
 	// Created by $NAME on $(date +"%d/%m/%y")
 	// Copyright © $(date +"%Y") $NAME
-	// Licensed under the MIT license, see LICENSE file
+	// Licensed under the MIT license, see LICENSE.md file
 	//
 	END
 }

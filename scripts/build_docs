@@ -20,6 +20,7 @@ jazzy \
     --github_url 'https://github.com/Saik0s/CleanEvents' \
     --source-directory Sources/Core \
     --sdk iphonesimulator \
+    --swift-version 4.0 \
     --module Core \
     --readme README.md \
     --output Docs
