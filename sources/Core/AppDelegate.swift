@@ -1,8 +1,8 @@
 //
 // AppDelegate.swift
-// Created by Igor Tarasenko on 22/11/17
+// Created by Igor Tarasenko on 30/11/17
 // Copyright © 2017 Igor Tarasenko
-// Licensed under the MIT license, see LICENSE file
+// Licensed under the MIT license, see LICENSE.md file
 //
 
 import UIKit
