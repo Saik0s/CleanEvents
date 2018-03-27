@@ -4,5 +4,7 @@
 
 set -euo pipefail
 IFS=$'\n\t'
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-${0%/*}/bootstrap
+${DIR}/bootstrap
+

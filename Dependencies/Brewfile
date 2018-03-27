@@ -1,0 +1,9 @@
+tap "homebrew/core"
+tap "homebrew/bundle"
+tap "caskroom/cask"
+tap "facebook/fb"
+
+brew "sourcery", args: ['HEAD']
+brew "swiftlint", args: ['HEAD']
+brew "buck", args: ['HEAD']
+brew "xctool", args: ['HEAD']

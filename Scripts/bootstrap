@@ -4,15 +4,19 @@
 
 set -euo pipefail
 IFS=$'\n\t'
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-cd "${0%/*}/.."
+cd "${DIR}/../Dependencies"
 
-if [[ -s Brewfile ]] && [[ $(uname -s) == Darwin ]]; then
-    brew bundle check || brew bundle
-fi
+[[ -s Brewfile ]] && {
+    brew bundle check || brew bundle;
+}
 
-if [[ -s Gemfile ]]; then
-    bundle check || bundle install --full-index
-fi
+[[ -s Gemfile ]] && {
+    bundle check || bundle install;
+}
 
-${0%/*}/dependencies
+#bundle exec pod repo update
+[[ -s Podfile ]] && {
+    bundle exec pod install
+}
