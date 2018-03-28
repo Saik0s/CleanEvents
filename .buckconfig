@@ -9,7 +9,7 @@
     version = 4.0
     compiler_flags = -suppress-warnings -enable-testing
 [apple]
-    xctool_default_destination_specifier = platform=iOS Simulator, name=iPhone 8, OS=11.1
+    xctool_default_destination_specifier = platform=iOS Simulator, name=iPhone 8, OS=11.2
     iphonesimulator_target_sdk_version = 10.0
     iphoneos_target_sdk_version = 10.0
     default_debug_info_format_for_binaries = NONE
