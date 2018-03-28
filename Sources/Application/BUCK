@@ -27,6 +27,7 @@ apple_binary(
     ],
     deps = [
         '//Resources:AppResources',
+        '//Resources:AppAssets',
         '//Sources/Core:Core'
     ],
 )

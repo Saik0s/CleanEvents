@@ -1,12 +1,14 @@
 apple_resource(
     name='AppResources',
-    dirs=[
-        'Animations',
-        'Fonts',
-        'Localizations',
-        'Styles',
-    ],
+    dirs=[],
+    #     'Animations',
+    #     'Fonts',
+    #     'Localizations',
+    #     'Styles',
+    #     'Storyboards',
+    # ],
     files=[
+        'Storyboards/LaunchScreen.storyboard',
     ],
     visibility=[
         'PUBLIC'
